@@ -3,7 +3,7 @@ export default class BasePokemon {
         this.name = name;
         this.level = level;
         this.maxHealth = maxHealth;
-        this.health = maxHealth; // HP actual al máximo
+        this.health = maxHealth;
         this.isAlive = true;
     }
 

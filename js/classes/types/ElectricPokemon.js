@@ -5,12 +5,12 @@ export default class ElectricPokemon extends TrainedPokemon {
         super(name, level, maxHealth, powerPoints);
     }
 
-    // Polimorfismo: sobrescribe useAbility
+
     useAbility(target) {
         const cost = 5;
         if (this.powerPoints >= cost) {
             this.powerPoints -= cost;
-            // Probabilidad de daño crítico
+
             const isCrit = Math.random() > 0.6;
             const baseDamage = Math.floor(this.level * 3 + 5);
             const finalDamage = isCrit ? parseInt(baseDamage * 1.5) : baseDamage;

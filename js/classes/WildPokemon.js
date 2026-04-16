@@ -14,7 +14,7 @@ export default class WildPokemon extends BasePokemon {
     }
 
     useAbility(target) {
-        // Fallback básico para Pokémon salvajes no tan especializados
+
         return this.attack(target);
     }
 }

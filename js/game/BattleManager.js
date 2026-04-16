@@ -3,7 +3,7 @@ export default class BattleManager {
         this.player = player;
         this.enemy = enemy;
         
-        // Elementos del DOM
+
         this.ui = {
             log: document.getElementById('log-text'),
             btnAttack: document.getElementById('btn-attack'),
@@ -29,7 +29,7 @@ export default class BattleManager {
     }
 
     initBattle() {
-        // Inicializar UI con los atributos de los objetos
+
         this.ui.playerName.innerText = this.player.name;
         this.ui.playerLvl.innerText = this.player.level;
         this.ui.playerHpMax.innerText = this.player.maxHealth;
@@ -44,18 +44,18 @@ export default class BattleManager {
     }
 
     updateUI() {
-        // Player HP
+
         this.ui.playerHpText.innerText = this.player.health;
         const pHealthPct = (this.player.health / this.player.maxHealth) * 100;
         this.ui.playerHpFill.style.width = `${pHealthPct}%`;
         this.ui.playerHpFill.style.backgroundColor = this.getHealthColor(pHealthPct);
 
-        // Player PP
+
         this.ui.playerPpText.innerText = this.player.powerPoints;
         const pPpPct = (this.player.powerPoints / this.player.maxPowerPoints) * 100;
         this.ui.playerPpFill.style.width = `${pPpPct}%`;
         
-        // Enemy HP
+
         const eHealthPct = (this.enemy.health / this.enemy.maxHealth) * 100;
         this.ui.enemyHpFill.style.width = `${eHealthPct}%`;
         this.ui.enemyHpFill.style.backgroundColor = this.getHealthColor(eHealthPct);
@@ -68,7 +68,7 @@ export default class BattleManager {
     }
 
     log(message) {
-        // Lógica sencilla de caja de texto
+
         this.ui.log.innerText = message;
     }
 
@@ -87,7 +87,7 @@ export default class BattleManager {
         
         this.toggleButtons(true);
         
-        // Animación de jugador atacando
+
         this.ui.playerSprite.classList.add('attack-anim');
         setTimeout(() => this.ui.playerSprite.classList.remove('attack-anim'), 100);
 
@@ -100,7 +100,7 @@ export default class BattleManager {
 
         this.log(actionMsg);
         
-        // Animación de impacto en enemigo
+
         this.ui.enemySprite.classList.add('damage-anim');
         setTimeout(() => this.ui.enemySprite.classList.remove('damage-anim'), 500);
 
@@ -111,18 +111,18 @@ export default class BattleManager {
             return;
         }
 
-        // Turno del enemigo
+
         setTimeout(() => this.executeEnemyTurn(), 2000);
     }
 
     executeEnemyTurn() {
         if (!this.enemy.isAlive) return;
 
-        // Enemigo ataca
+
         this.ui.enemySprite.classList.add('attack-anim');
         setTimeout(() => this.ui.enemySprite.classList.remove('attack-anim'), 100);
 
-        // IA Básica: 30% probabilidad de usar su habilidad / ataque fuerte
+
         let actionMsg = "";
         const u = Math.random();
         if (u < 0.3 && this.enemy.powerPoints >= 5) {
@@ -133,7 +133,7 @@ export default class BattleManager {
 
         this.log(actionMsg);
         
-        // Player blink anim
+
         this.ui.playerSprite.classList.add('damage-anim');
         setTimeout(() => this.ui.playerSprite.classList.remove('damage-anim'), 500);
 
@@ -148,7 +148,7 @@ export default class BattleManager {
             return;
         }
 
-        // Recuperar turno del jugador
+
         this.toggleButtons(false);
     }
 }

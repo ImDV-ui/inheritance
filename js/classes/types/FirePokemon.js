@@ -5,7 +5,7 @@ export default class FirePokemon extends WildPokemon {
         super(name, level, maxHealth, powerPoints);
     }
 
-    // Polimorfismo: sobrescribe useAbility
+
     useAbility(target) {
         const cost = 5;
         if (this.powerPoints >= cost) {
