@@ -1,14 +1,28 @@
-import ElectricPokemon from './classes/types/ElectricPokemon.js';
-import FirePokemon from './classes/types/FirePokemon.js';
+import PokeAPI from './api/PokeAPI.js';
 import BattleManager from './game/BattleManager.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const pikachu = new ElectricPokemon("Pikachu", 5, 35, 20);
+document.addEventListener('DOMContentLoaded', async () => {
+    const logElem = document.getElementById('log-text');
+    const actBox = document.getElementById('action-box');
+    
+    logElem.innerText = "Conectando con la Dex de Kanto (PokeAPI)...";
     
 
-    const charmander = new FirePokemon("Charmander", 5, 39, 10);
-    
+    const pId = Math.floor(Math.random() * 151) + 1;
+    let eId = Math.floor(Math.random() * 151) + 1;
+    if (eId === pId) eId = (eId % 151) + 1;
 
-    const battle = new BattleManager(pikachu, charmander);
+    try {
+        logElem.innerText = `Descargando información en paralelo de IDs ${pId} y ${eId}...`;
+        const [playerPokemon, enemyPokemon] = await Promise.all([
+            PokeAPI.getPokemon(pId, 50),
+            PokeAPI.getPokemon(eId, 50)
+        ]);
+
+        new BattleManager(playerPokemon, enemyPokemon);
+
+    } catch (e) {
+        logElem.innerText = "Hubo un error cargando los datos de la PokéAPI. Revisa la consola.";
+        console.error(e);
+    }
 });
