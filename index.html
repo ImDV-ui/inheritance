@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Battle Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="battle-scene">
+            <!-- Enemy Area -->
+            <div class="pokemon-area enemy-area">
+                <div class="status-panel enemy-status">
+                    <div class="status-header">
+                        <span id="enemy-name" class="name">Charmander</span>
+                        <span class="level">Lv<span id="enemy-level">5</span></span>
+                    </div>
+                    <div class="bar-container">
+                        <span class="bar-label">HP</span>
+                        <div class="bar-bg">
+                            <div id="enemy-hp-fill" class="bar-fill hp-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sprite-container">
+                    <img id="enemy-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Enemy Pokemon" class="pokemon-sprite">
+                </div>
+            </div>
+
+            <!-- Player Area -->
+            <div class="pokemon-area player-area">
+                <div class="sprite-container">
+                    <img id="player-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png" alt="Player Pokemon" class="pokemon-sprite">
+                </div>
+                <div class="status-panel player-status">
+                    <div class="status-header">
+                        <span id="player-name" class="name">Pikachu</span>
+                        <span class="level">Lv<span id="player-level">5</span></span>
+                    </div>
+                    <div class="bar-container">
+                        <span class="bar-label">HP</span>
+                        <div class="bar-bg">
+                            <div id="player-hp-fill" class="bar-fill hp-fill"></div>
+                        </div>
+                    </div>
+                    <div class="health-text"><span id="player-hp-text"></span> / <span id="player-hp-max"></span></div>
+                    
+                    <div class="bar-container mt-2">
+                        <span class="bar-label" style="color: #4db8ff">PP</span>
+                        <div class="bar-bg">
+                            <div id="player-pp-fill" class="bar-fill pp-fill"></div>
+                        </div>
+                    </div>
+                    <div class="health-text"><span id="player-pp-text"></span> / <span id="player-pp-max"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Panel -->
+        <div id="ui-panel">
+            <div id="log-box">
+                <p id="log-text">¡Un Charmander salvaje apareció!</p>
+            </div>
+            <div id="action-box">
+                <button id="btn-attack" class="action-btn">Placaje <span class="pp-cost">(-0 PP)</span></button>
+                <button id="btn-ability" class="action-btn special-btn">Impactrueno <span class="pp-cost">(-5 PP)</span></button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
